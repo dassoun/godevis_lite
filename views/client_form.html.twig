@@ -1,0 +1,118 @@
+{% extends 'layout.html.twig' %}
+{% set adminMenu = true %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<h2 class="text-center">{{ block('title') }}</h2>
+{% for flashMessage in app.session.flashbag.get('success') %}
+<div class="alert alert-success">
+    {{ flashMessage }}
+</div>
+{% endfor %}
+
+<div class="well">
+{{ form_start(clientForm, { 'attr': {'class': 'form-horizontal'} }) }}
+    <div class="form-group">
+        {{ form_label(clientForm.raisonSociale, null, { 'label_attr':  {
+            'class': 'col-sm-4 control-label'
+        }}) }}
+        <div class="col-sm-6">
+            {{ form_errors(clientForm.raisonSociale) }}
+            {{ form_widget(clientForm.raisonSociale, { 'attr':  {
+                'class': 'form-control'
+            }}) }}
+        </div>
+    </div>
+    <div class="form-group">
+        {{ form_label(clientForm.adresse1, null, { 'label_attr':  {
+            'class': 'col-sm-4 control-label'
+        }}) }}
+        <div class="col-sm-6">
+            {{ form_errors(clientForm.adresse1) }}
+            {{ form_widget(clientForm.adresse1, { 'attr':  {
+                'class': 'form-control',
+                'rows': '8'
+            }}) }}
+        </div>
+    </div>
+        <div class="form-group">
+        {{ form_label(clientForm.adresse2, null, { 'label_attr':  {
+            'class': 'col-sm-4 control-label'
+        }}) }}
+        <div class="col-sm-6">
+            {{ form_errors(clientForm.adresse2) }}
+            {{ form_widget(clientForm.adresse2, { 'attr':  {
+                'class': 'form-control',
+                'rows': '8'
+            }}) }}
+        </div>
+    </div>
+        <div class="form-group">
+        {{ form_label(clientForm.adresse3, null, { 'label_attr':  {
+            'class': 'col-sm-4 control-label'
+        }}) }}
+        <div class="col-sm-6">
+            {{ form_errors(clientForm.adresse3) }}
+            {{ form_widget(clientForm.adresse3, { 'attr':  {
+                'class': 'form-control',
+                'rows': '8'
+            }}) }}
+        </div>
+    </div>
+        <div class="form-group">
+        {{ form_label(clientForm.codePostal, null, { 'label_attr':  {
+            'class': 'col-sm-4 control-label'
+        }}) }}
+        <div class="col-sm-6">
+            {{ form_errors(clientForm.codePostal) }}
+            {{ form_widget(clientForm.codePostal, { 'attr':  {
+                'class': 'form-control',
+                'rows': '8'
+            }}) }}
+        </div>
+    </div>
+        <div class="form-group">
+        {{ form_label(clientForm.ville, null, { 'label_attr':  {
+            'class': 'col-sm-4 control-label'
+        }}) }}
+        <div class="col-sm-6">
+            {{ form_errors(clientForm.ville) }}
+            {{ form_widget(clientForm.ville, { 'attr':  {
+                'class': 'form-control',
+                'rows': '8'
+            }}) }}
+        </div>
+    </div>
+        <div class="form-group">
+        {{ form_label(clientForm.telephone, null, { 'label_attr':  {
+            'class': 'col-sm-4 control-label'
+        }}) }}
+        <div class="col-sm-6">
+            {{ form_errors(clientForm.telephone) }}
+            {{ form_widget(clientForm.telephone, { 'attr':  {
+                'class': 'form-control',
+                'rows': '8'
+            }}) }}
+        </div>
+    </div>
+        <div class="form-group">
+        {{ form_label(clientForm.fax, null, { 'label_attr':  {
+            'class': 'col-sm-4 control-label'
+        }}) }}
+        <div class="col-sm-6">
+            {{ form_errors(clientForm.fax) }}
+            {{ form_widget(clientForm.fax, { 'attr':  {
+                'class': 'form-control',
+                'rows': '8'
+            }}) }}
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-4 col-sm-3">
+            <input type="submit" class="btn btn-primary" value="Save" />
+        </div>
+    </div>
+{{ form_end(clientForm) }}
+</div>
+{% endblock %}

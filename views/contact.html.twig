@@ -1,0 +1,50 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<p>
+    <h2>{{ client.raisonSociale }}</h2>
+    <p>{{ client.ville }}</p>
+    <h3>Contacts</h3>
+    {% for contact in contacts %}
+        <strong>{{ contact.nom }}</strong> {{ contact.prenom }}<br>
+    {% else %}
+        No contact yet.
+    {% endfor %}
+
+    <h3>Add a contact</h3>
+    {% if contactForm %}
+        {{ form_start(contactForm) }}
+            <div class="form-group">
+                <div class="col-md-4">
+                    {{ form_errors(contactForm.nom) }}
+                    {{ form_widget(contactForm.nom, { 'attr':  {
+                        'class': 'form-control input-md',
+                        'placeholder': 'Nom'
+                    }}) }}
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-4">
+                    {{ form_errors(contactForm.prenom) }}
+                    {{ form_widget(contactForm.prenom, { 'attr':  {
+                        'class': 'form-control input-md',
+                        'placeholder': 'Prénom'
+                    }}) }}
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary" value="Publish comment" />
+            </div>
+        {{ form_end(contactForm) }}
+        {% for flashMessage in app.session.flashbag.get('success') %}
+            <div class="alert alert-success">
+                {{ flashMessage }}
+            </div>
+        {% endfor %}
+    {% else %}
+        <a href="{{ path('login') }} ">Log in</a> to add contacts.
+    {% endif %}
+</p>
+{% endblock %}

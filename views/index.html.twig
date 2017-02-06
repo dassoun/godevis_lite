@@ -1,0 +1,12 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    {% for client in clients %}
+        <client>
+            <h2>{{ client.raisonSociale }}</h2>
+            <p>{{ client.ville }}</p>
+        </client>
+    {% endfor %}
+{% endblock %}
